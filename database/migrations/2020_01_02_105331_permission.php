@@ -13,7 +13,24 @@ class Permission extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('permissions', function ($table) {
+            $table->integer('id')
+                ->unsigned()
+                ->autoIncrement();
+            $table->unsignedInteger('role_id')
+                ->foreign('role_id')
+                ->references('id')
+                ->on('role');
+            $table->string('route')
+                ->nullable($value = false);
+            $table->boolean('status')
+                ->nullable($value = false)
+                ->default(false);
+            $table->integer('order')
+                ->nullable($value = true)
+                ->default(0);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +40,6 @@ class Permission extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('permissions');
     }
 }
