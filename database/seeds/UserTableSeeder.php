@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class UserTableSeeder extends Seeder
 {
@@ -11,6 +12,18 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $users = [
+            [
+                "role_id" => 1,
+                "first_name" => "Admin",
+                "last_name" => "Admin",
+                "email" => "admin@admin.com",
+                "password" => Hash::make('secret'),
+            ],
+        ];
+
+        foreach ($users as $user) {
+            User::create($user);
+        }
     }
 }

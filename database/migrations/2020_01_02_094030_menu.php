@@ -14,13 +14,20 @@ class Menu extends Migration
     public function up()
     {
         Schema::create('menus', function ($table) {
-            $table->increments('id')->unsigned();
+            $table->integer('id')
+                ->unsigned()
+                ->autoIncrement();
             $table->integer('parent_id');
             $table->string('name')
                 ->unique()
                 ->charset('latin1')
                 ->collate('latin1_general_ci');
-            $table->string('fa-icon');
+            $table->string('fa-icon')
+                ->nullable($value = true)
+                ->default(null);
+            $table->integer('order')
+                ->nullable($value = true)
+                ->default(null);
             $table->timestamps();
         });
     }

@@ -23,7 +23,9 @@ class Role extends Migration
                 ->unique()
                 ->charset('latin1')
                 ->collate('latin1_general_ci');
-            $table->string('fa-icon');
+            $table->string('fa-icon')
+                ->nullable($value = true)
+                ->default(null);
             $table->timestamps();
         });
     }
