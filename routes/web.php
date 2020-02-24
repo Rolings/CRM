@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::namespace('Front')->group(function () {
+    Route::get('/',['uses' => "FrontController@index"])->name('home');
+});
+
+
+Route::namespace('Front')->group(function () {
+    Route::get('/',['uses' => "FrontController@index"])->name('home');
 });
