@@ -14,7 +14,7 @@ class RoleGroup extends Migration
     public function up()
     {
         Schema::create('role_groups', function ($table) {
-            $table->increments('id')->unsigned();
+            $table->uuid('id')->primary();
             $table->string('name')
                 ->unique()
                 ->charset('latin1')

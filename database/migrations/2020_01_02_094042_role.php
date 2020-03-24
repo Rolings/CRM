@@ -14,8 +14,8 @@ class Role extends Migration
     public function up()
     {
         Schema::create('roles', function ($table) {
-            $table->increments('id')->unsigned();
-            $table->unsignedInteger('group_id')
+            $table->uuid('id')->primary();
+            $table->uuid('group_id')
                 ->foreign('group_id')
                 ->references('id')
                 ->on('role_group');

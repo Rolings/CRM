@@ -11,11 +11,18 @@
 |
 */
 
-Route::namespace('Front')->group(function () {
-    Route::get('/',['uses' => "FrontController@index"])->name('home');
+
+Route::namespace('front')->as('front.')->group(function () {
+    Route::get('/',['uses' => "FrontController@index"])->name('main');
+});
+Route::group(['namespace' => 'auth','prefix'=>env('ADMIN_URI'),'as'=>'admin.','middleware'=>'web'],function () {
+    Route::get('login',['uses' => "LoginController@index"])->name('login');
+    Route::post('auth',['uses' => "LoginController@login"])->name('auth');
+    Route::get('logout',['uses' => "LoginController@logout"])->name('logout');
+});
+
+Route::group(['namespace' => 'admin', 'prefix' => env('ADMIN_URI'), 'as' => 'admin.', 'middleware' => 'admin'], function () {
+    Route::get('{alias}', ['uses' => "AdminController@index"])->name('page');
 });
 
 
-Route::namespace('Front')->group(function () {
-    Route::get('/',['uses' => "FrontController@index"])->name('home');
-});

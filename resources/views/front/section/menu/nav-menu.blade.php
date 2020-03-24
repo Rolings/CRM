@@ -55,12 +55,8 @@
                             <li><a href="tips.htm">Полезные советы</a></li>
                         </ul>
                     </li>
-                    <li><a href="Contacts.htm">Медиа</a>
-                        <ul class="nav-menu hidden-xs" style="min-width: 160px;">
-                            <li><a href="gallery.htm">Галерея</a></li>
-                            <li><a href="gallery-img.htm">Галерея (фото)</a></li>
-                            <li><a href="gallery-video.htm">Галерея (видео)</a></li>
-                        </ul>
+                    <li>
+                        <a href="{{ route('admin.login') }}">Login</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

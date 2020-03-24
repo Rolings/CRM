@@ -2,20 +2,11 @@
 
 namespace App\Models;
 
+use App\Train\UUid;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
+    use UUid;
 
-    protected $fillable=['alias','id'];
-
-    public function parent()
-    {
-        return $this->hasMany(Menu::class, 'parent_id', 'id');
-    }
-
-    public function children()
-    {
-        return $this->hasMany(Menu::class, 'id', 'parent_id');
-    }
 }

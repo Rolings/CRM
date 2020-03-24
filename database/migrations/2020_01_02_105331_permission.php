@@ -14,10 +14,8 @@ class Permission extends Migration
     public function up()
     {
         Schema::create('permissions', function ($table) {
-            $table->integer('id')
-                ->unsigned()
-                ->autoIncrement();
-            $table->unsignedInteger('role_id')
+            $table->uuid('id')->primary();
+            $table->uuid('role_id')
                 ->foreign('role_id')
                 ->references('id')
                 ->on('role');

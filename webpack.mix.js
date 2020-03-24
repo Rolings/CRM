@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 /**ADMIN**/
 mix.js('resources/assets/admin/js/app.js', 'public/admin/js');
-
+mix.copyDirectory( 'resources/assets/admin/','public/admin/');
 /**FRONT**/
 
 mix.js('resources/assets/front/js/app.js', 'public/front/js');

@@ -14,18 +14,14 @@ class Menu extends Migration
     public function up()
     {
         Schema::create('menus', function ($table) {
-            $table->integer('id')
-                ->unsigned()
-                ->autoIncrement();
-            $table->integer('parent_id');
-            $table->string('alias')->unique();
-            $table->string('name')
-                ->unique()
-                ->charset('latin1')
-                ->collate('latin1_general_ci');
+            $table->uuid('id')->primary();
+            $table->uuid('parent_id');
+            $table->string('alias');
+            $table->string('name')->nullable($value = true);
             $table->string('fa-icon')
                 ->nullable($value = true)
                 ->default(null);
+            $table->string('image')->nullable($value = true);
             $table->integer('order')
                 ->nullable($value = true)
                 ->default(null);

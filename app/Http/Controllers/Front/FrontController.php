@@ -12,8 +12,12 @@ class FrontController extends Controller
 
     public function index()
     {
-        $menu = Menu::with('children')->get();
-        dd($menu);
+/*        $allMenu =  Menu::with(['children']);
+
+        $catalog= $allMenu->whereHas('parent',function ($query){
+                return $query->where('alias','katalog');
+            })->get();
+        $findMenu = $allMenu->where('alias','instrumenti-i-vitratni-materiali')->first();*/
         return view('front.template.main.index');
     }
 }
