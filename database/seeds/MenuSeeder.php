@@ -2,14 +2,15 @@
 
 use Illuminate\Database\Seeder;
 
-class MenuTableSeeder extends Seeder
+class MenuSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run(){
-
+    public function run()
+    {
+        //
     }
 }

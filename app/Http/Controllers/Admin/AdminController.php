@@ -11,6 +11,6 @@ class AdminController extends Controller
 {
     public function index($alias)
     {
-        return view('admin.template.' . $alias . '.index');
+        return view('admin.template.'.$alias.'.index');
     }
 }

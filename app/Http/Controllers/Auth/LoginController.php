@@ -29,6 +29,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('admin.page', 'dashboard');
         }
+        return redirect()->route('admin.login');
     }
 
     public function logout()

@@ -22,7 +22,7 @@
                     <ul style="margin: 11px 0 0 9px;" role="menu" class="dropdown-menu dropdown-wrap">
                         <li>
                             <a href="#">
-                                <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/1.jpg">Jhon Doe <b>Just Now</b>
+                                <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/1.jpg">{{ Auth::user()->first_name }} <b>{{ Auth::user()->last_name }}</b>
                             </a>
                         </li>
                         <li class="divider"></li>
@@ -119,7 +119,7 @@
             <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
                 <li>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" class="admin-pic img-circle" src="http://api.randomuser.me/portraits/thumb/men/10.jpg">Hi, Dave Mattew <b class="caret"></b>
+                        <img alt="" class="admin-pic img-circle" src="http://api.randomuser.me/portraits/thumb/men/10.jpg">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <b class="caret"></b>
                     </a>
                     <ul style="margin-top:14px;" role="menu" class="dropdown-setting dropdown-menu">
                         <li>
