@@ -22,6 +22,7 @@ Route::group(['namespace' => 'auth','prefix'=>env('ADMIN_URI'),'as'=>'admin.','m
 });
 
 Route::group(['namespace' => 'admin', 'prefix' => env('ADMIN_URI'), 'as' => 'admin.', 'middleware' => 'admin'], function () {
+    Route::resource('users', 'UserControllers');
     Route::get('{alias}', ['uses' => "AdminController@index"])->name('page');
 });
 

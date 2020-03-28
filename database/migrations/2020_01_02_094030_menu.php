@@ -15,16 +15,20 @@ class Menu extends Migration
     {
         Schema::create('menus', function ($table) {
             $table->uuid('id')->primary();
-            $table->uuid('parent_id');
+            $table->uuid('parent_id')->nullable();
+            $table->string('lang');
             $table->string('alias');
             $table->string('name')->nullable($value = true);
+            $table->string('model')->nullable($value = true);
             $table->string('fa-icon')
                 ->nullable($value = true)
                 ->default(null);
             $table->string('image')->nullable($value = true);
+            $table->boolean('is_active')->nullable($value = true);
             $table->integer('order')
                 ->nullable($value = true)
                 ->default(null);
+
             $table->timestamps();
         });
     }

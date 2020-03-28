@@ -37,31 +37,34 @@
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip ajax-load" href="{{ route('admin.page','category') }}" title="Dashboard">
+                        <a class="tooltip-tip ajax-load" href="{{ route('admin.page','category') }}" title="Category">
                             <i class="icon-window"></i>
                             <span>Category</span>
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip ajax-load" href="{{ route('admin.page','page') }}" title="Dashboard">
+                        <a class="tooltip-tip ajax-load" href="{{ route('admin.page','page') }}" title="Page">
                             <i class="icon-window"></i>
                             <span>Page</span>
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip ajax-load" href="{{ route('admin.page','product') }}" title="Dashboard">
+                        <a class="tooltip-tip ajax-load" href="{{ route('admin.page','product') }}" title="Product">
                             <i class="icon-window"></i>
                             <span>Product</span>
                         </a>
                     </li>
                     <li>
-                        <a class="tooltip-tip ajax-load" href="{{ route('admin.page','Setting') }}" title="Dashboard">
+                        <a class="tooltip-tip ajax-load" href="#" title="Setting">
                             <i class="icon-window"></i>
                             <span>Setting</span>
                         </a>
+                        <ul>
+                            <li>
+                                <a class="tooltip-tip2 ajax-load" href="{{ route('admin.page','users') }}" title="Blank Page"><i class="entypo-user"></i><span>Users</span></a>
+                            </li>
+                        </ul>
                     </li>
-
-
 
                     <li>
                         <a class="tooltip-tip" href="#" title="Extra Pages">
