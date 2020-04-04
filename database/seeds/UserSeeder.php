@@ -13,12 +13,26 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
+        $admin             = new User();
+        $admin->name       = 'Дмитрий';
+        $admin->name       = 'Дмитрий';
+        $admin->notification = true;
+        $admin->phone      = '123456';
+        $admin->password   = bcrypt('meganote');
+        $admin->email      = 'sancho@artjoker.ua';
+        $admin->active     = true;
+        $admin->save();
+
+
+
         $users = [
             [
                 "role_id" => 1,
-                "first_name" => "Admin",
-                "last_name" => "Admin",
+                "first_name" => "Дмитрий",
+                "last_name" => "Шрамко",
                 "email" => "admin@admin.com",
+                'is_active'=>true,
                 "password" => Hash::make('secret'),
             ],
         ];

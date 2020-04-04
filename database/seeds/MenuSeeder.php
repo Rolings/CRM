@@ -26,27 +26,7 @@ class MenuSeeder extends Seeder
             [
                 'parent_id'=>null,
                 'lang'=>'ru',
-                'alias'=>'category',
-                'name'=>'Category',
-                'fa-icon'=>'icon-window',
-                'image'=>'',
-                'is_active'=>1,
-                'order'=>1
-            ],
-            [
-                'parent_id'=>null,
-                'lang'=>'ru',
-                'alias'=>'page',
-                'name'=>'Page',
-                'fa-icon'=>'icon-window',
-                'image'=>'',
-                'is_active'=>1,
-                'order'=>2
-            ],
-            [
-                'parent_id'=>null,
-                'lang'=>'ru',
-                'alias'=>'product',
+                'alias'=>'products',
                 'name'=>'Product',
                 'fa-icon'=>'icon-window',
                 'image'=>'',
@@ -76,7 +56,7 @@ class MenuSeeder extends Seeder
                     [
                         'parent_id'=>null,
                         'lang'=>'ru',
-                        'alias'=>'user',
+                        'alias'=>'users',
                         'name'=>'Users',
                         'fa-icon'=>'entypo-user',
                         'image'=>'',

@@ -5,12 +5,20 @@ namespace App\Models;
 use App\Train\UUid;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable,UUid,AuthenticableTrait;
+    use Notifiable,UUid,HasRoles,AuthenticableTrait;
+
+    const SUPERADMIN = 'Superadmin';
+
+    const ADMIN_ROLES
+        = [
+            self::SUPERADMIN,
+        ];
+
 
     protected $keyType = 'string';
     protected $primaryKey = 'id';
@@ -21,24 +29,44 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','name', 'email', 'password',
+        'id',
+        'role_id',
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'image',
+        'is_admin',
+        'is_active',
+        'last_access',
+        'remember_token',
+        'last_access',
+        'created_at',
+        'updated_at',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setPhoneAttribute($value)
+    {
+        return $this->attributes['phone'] = preg_replace('![^\d]+!u', '', $value);
+    }
+
+    public function setEmailAttribute($value)
+    {
+        return $this->attributes['email'] = trim($value);
+    }
+
+    public function scopeOnlyActive($query)
+    {
+        return $query->whereIsActive(true);
+    }
+
+
 }
