@@ -15,10 +15,7 @@ class Role extends Migration
     {
         Schema::create('roles', function ($table) {
             $table->uuid('id')->primary();
-            $table->uuid('group_id')
-                ->foreign('group_id')
-                ->references('id')
-                ->on('role_group');
+            $table->uuid('group_id');
             $table->string('name')
                 ->unique()
                 ->charset('latin1')
@@ -27,6 +24,8 @@ class Role extends Migration
                 ->nullable($value = true)
                 ->default(null);
             $table->timestamps();
+
+
         });
     }
 

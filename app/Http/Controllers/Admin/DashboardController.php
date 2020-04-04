@@ -1,20 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\User;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Repositories\User\UserRepositories;
 
-class UserControllers extends Controller
+class DashboardController extends Controller
 {
-    protected $model;
-
-    public function __construct(User $user)
-    {
-        // set the model
-        $this->model = new UserRepositories($user);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +14,7 @@ class UserControllers extends Controller
      */
     public function index()
     {
-        $data = [
-            'users'=>$this->model->all()
-        ];
-        return view('admin.template.users.index',$data);
+        return view('admin.template.dashboard.index');
     }
 
     /**

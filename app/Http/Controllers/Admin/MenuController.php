@@ -7,7 +7,7 @@ use App\Models\Menu;
 use App\Repositories\User\UserRepositories;
 use Illuminate\Http\Request;
 
-class MenuControllers extends Controller
+class MenuController extends Controller
 {
 
     protected $model;
@@ -24,7 +24,7 @@ class MenuControllers extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.template.menu.index');
     }
 
     /**

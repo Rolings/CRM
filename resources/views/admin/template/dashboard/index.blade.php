@@ -638,13 +638,13 @@
         </div>
     </div>
 @endsection
-@section('style_before')
+@section('script_before')
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.js"></script>
     <script src="{{ asset('admin/js/progress-bar/src/jquery.velocity.min.js') }}"></script>
     <script src="{{ asset('admin/js/progress-bar/number-pb.js') }}"></script>
     <script src="{{ asset('admin/js/progress-bar/progress-app.js') }}"></script>
 @endsection
-@section('style_after')
+@section('script_after')
     <script src="{{ asset('admin/js/chart/jquery.flot.js') }}"></script>
     <script src="{{ asset('admin/js/chart/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('admin/js/chart/realTime.js') }}"></script>

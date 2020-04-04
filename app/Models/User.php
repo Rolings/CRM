@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use Notifiable,UUid,AuthenticableTrait;
 
+    protected $keyType = 'string';
     protected $primaryKey = 'id';
 
     /**
@@ -20,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'id','name', 'email', 'password',
     ];
 
     /**

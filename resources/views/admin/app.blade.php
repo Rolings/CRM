@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/loader-style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.css') }}">
+
     <style type="text/css">
         canvas#canvas4 {
             position: relative;
@@ -35,13 +36,32 @@
 @if(!isset($error))
     @include('admin.section.sidebar.r-sidebar')
 @endif
-@yield('style_before')
+@yield('script_before')
 <script type="text/javascript" src="{{ asset('admin/js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/preloader.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/bootstrap.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/app.js') }}"></script>
-<script type="text/javascript" src="{{ asset('admin/js/load.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('admin/js/skin-select/jquery.cookie.js') }}"></script>
+<script type="text/javascript" src="{{ asset('admin/js/skin-select/skin-select.js') }}"></script>
+<script type="text/javascript" src="{{ asset('admin/js/clock/date.js') }}"></script>
+<script type="text/javascript" src="{{ asset('admin/js/gage/justgage.js') }}"></script>
+<script type="text/javascript" src="{{ asset('admin/js/custom/scriptbreaker-multiple-accordion-1.js') }}"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script type="text/javascript" src="{{ asset('admin/js/slidebars/slidebars.min.js') }}"></script>
+
+{{--<script type="text/javascript" src="{{ asset('admin/js/load.js') }}"></script>--}}
 <script type="text/javascript" src="{{ asset('admin/js/main.js') }}"></script>
-@yield('style_after')
+
+<script>
+    $(".topnav").accordionze({
+        accordionze: true,
+        speed: 500,
+        closedSign: '<img src="{{ asset("admin/img/plus.png") }}">',
+        openedSign: '<img src="{{ asset("admin/img/minus.png") }}">'
+    });
+</script>
+
+@yield('script_after')
 </body>
 </html>

@@ -1,15 +1,15 @@
 //Sliding Effect Control
-head.js("js/skin-select/jquery.cookie.js");
-head.js("js/skin-select/skin-select.js");
+/*head.js("js/skin-select/jquery.cookie.js");
+head.js("js/skin-select/skin-select.js");*/
 
 //Showing Date
-head.js("js/clock/date.js");
+/*head.js("js/clock/date.js");*/
 
 //Bootstrap
 //head.js("js/bootstrap.js");
 
 //NEWS STICKER
-head.js("js/newsticker/jquery.newsTicker.js", function() {
+/*head.js("js/newsticker/jquery.newsTicker.js", function() {
 
     var nt_title = $('#nt-title').newsTicker({
         row_height: 18,
@@ -19,14 +19,14 @@ head.js("js/newsticker/jquery.newsTicker.js", function() {
     });
 
 
-});
+});*/
 
 //------------------------------------------------------------- 
 
 
 ////Acordion and Sliding menu
 
-head.js("js/custom/scriptbreaker-multiple-accordion-1.js", function() {
+/*head.js("js/custom/scriptbreaker-multiple-accordion-1.js", function() {
 
     $(".topnav").accordionze({
         accordionze: true,
@@ -48,24 +48,24 @@ head.js("js/slidebars/slidebars.min.js", "http://cdnjs.cloudflare.com/ajax/libs/
             mySlidebars.toggle('right');
         });
     });
-});
+});*/
 
 //-------------------------------------------------------------
 
 //SEARCH MENU
-head.js("js/search/jquery.quicksearch.js", function() {
+/*head.js("js/search/jquery.quicksearch.js", function() {
 
     $('input.id_search').quicksearch('#menu-showhide li, .menu-left-nest li');
    
    
 
-});
+});*/
 //-------------------------------------------------------------
 
 
 
 //EASY PIE CHART
-head.js("js/gage/jquery.easypiechart.min.js", function() {
+/*head.js("js/gage/jquery.easypiechart.min.js", function() {
 
     $(function() {
 
@@ -112,12 +112,12 @@ head.js("js/gage/jquery.easypiechart.min.js", function() {
         });
     });
 
-});
+});*/
 //-------------------------------------------------------------
 
 //TOOL TIP
 
-head.js("js/tip/jquery.tooltipster.js", function() {
+/*head.js("js/tip/jquery.tooltipster.js", function() {
 
     $('.tooltip-tip-x').tooltipster({
         position: 'right'
@@ -167,12 +167,11 @@ head.js("js/tip/jquery.tooltipster.js", function() {
 
 
 
-});
+});*/
 //------------------------------------------------------------- 
 
 //NICE SCROLL
-
-head.js("js/nano/jquery.nanoscroller.js", function() {
+/*head.js("js/nano/jquery.nanoscroller.js", function() {
 
     $(".nano").nanoScroller({
         //stop: true 
@@ -184,13 +183,13 @@ head.js("js/nano/jquery.nanoscroller.js", function() {
 
     });
 
-});
+});*/
 //------------------------------------------------------------- 
 
 
 //------------------------------------------------------------- 
 //PAGE LOADER
-head.js("js/pace/pace.js", function() {
+/*head.js("js/pace/pace.js", function() {
 
     paceOptions = {
         ajax: false, // disabled
@@ -201,12 +200,12 @@ head.js("js/pace/pace.js", function() {
         }
     };
 
-});
+});*/
 
 //------------------------------------------------------------- 
 
 //SPARKLINE CHART
-head.js("js/chart/jquery.sparkline.js", function() {
+/*head.js("js/chart/jquery.sparkline.js", function() {
 
     $(function() {
         $('.inlinebar').sparkline('html', {
@@ -266,44 +265,39 @@ head.js("js/chart/jquery.sparkline.js", function() {
     });
 
 
-});
+});*/
 
 //------------------------------------------------------------- 
 
 //DIGITAL CLOCK
-head.js("js/clock/jquery.clock.js", function () {
+/*head.js("js/clock/jquery.clock.js", function () {
 
     //clock
     $('#digital-clock').clock({
-        offset: '+5',
+        offset: '+3',
         type: 'digital'
 
 
     });
-});
+});*/
 
-//------------------------------------------------------------- 
-
-head.js("js/gage/raphael.2.1.0.min.js", "js/gage/justgage.js", function() {
-
-
-
-    var g1;
-    window.onload = function() {
-        var g1 = new JustGage({
-            id: "g1",
-            value: getRandomInt(0, 1000),
-            min: 0,
-            max: 1000,
-            relativeGaugeSize: true,
-            gaugeColor: "rgba(0,0,0,0.4)",
-            levelColors: "#0DB8DF",
-            labelFontColor : "#ffffff",
-            titleFontColor: "#ffffff",
-            valueFontColor :"#ffffff",
-            label: "VISITORS",
-            gaugeWidthScale: 0.2,
-            donut: true
-        });
-    };
-});
+/*
+var g1;
+window.onload = function() {
+    var g1 = new JustGage({
+        id: "g1",
+        value: getRandomInt(0, 1000),
+        min: 0,
+        max: 1000,
+        relativeGaugeSize: true,
+        gaugeColor: "rgba(0,0,0,0.4)",
+        levelColors: "#0DB8DF",
+        labelFontColor : "#ffffff",
+        titleFontColor: "#ffffff",
+        valueFontColor :"#ffffff",
+        label: "VISITORS",
+        gaugeWidthScale: 0.2,
+        donut: true
+    });
+};
+*/

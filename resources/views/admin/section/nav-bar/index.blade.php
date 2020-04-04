@@ -123,7 +123,7 @@
                     </a>
                     <ul style="margin-top:14px;" role="menu" class="dropdown-setting dropdown-menu">
                         <li>
-                            <a href="#">
+                            <a href="{{ route('admin.users.show',Auth::user()->id) }}">
                                 <span class="entypo-user"></span>&#160;&#160;My Profile</a>
                         </li>
                         <li>

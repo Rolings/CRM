@@ -1,5 +1,5 @@
 @extends('admin.app')
-@section('title','Пользователи')
+@section('title',__('admin.users'))
 
 @section('content')
     <div class="wrap-fluid">
@@ -21,33 +21,23 @@
 
             <!-- BREADCRUMB -->
             <ul id="breadcrumb">
-                <li>
-                    <span class="entypo-home"></span>
-                </li>
-                <li><i class="fa fa-lg fa-angle-right"></i>
-                </li>
-                <li><a href="#" title="Sample page 1">Home</a>
-                </li>
-                <li><i class="fa fa-lg fa-angle-right"></i>
-                </li>
-                <li><a href="#" title="Sample page 1">Blog List</a>
-                </li>
+                <li><span class="entypo-home"></span></li>
+                <li><i class="fa fa-lg fa-angle-right"></i></li>
+                <li><a href="#" title="Sample page 1">{{ __('admin.users') }}</a></li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
                         <input style="border-radius:15px" type="text" placeholder="Search..." class="form-control">
                     </div>
                 </li>
             </ul>
-
             <!-- END OF BREADCRUMB -->
-
-
             <div class="content-wrap">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="nest" id="tableStaticClose">
                             <div class="title-alt">
                                 <h6>Basic Responsive Tables</h6>
+
                                 <div class="titleClose">
                                     <a class="gone" href="#tableStaticClose">
                                         <span class="entypo-cancel"></span>
@@ -60,38 +50,58 @@
                                 </div>
                             </div>
                             <div class="body-nest" id="tableStatic">
-
+                                <div class="row" style="margin-bottom:10px;">
+                                    <div class="col-sm-4">
+                                        <input class="form-control" id="filter" placeholder="Search..." type="text">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <select class="filter-status form-control">
+                                            <option value="active">Active</option>
+                                            <option value="disabled">Disabled</option>
+                                            <option value="suspended">Suspended</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="{{ route('admin.users.create') }}" class="btn btn-success dropdown-toggle pull-right" title="Filter using the Filter API">Добавить</a>
+                                    </div>
+                                </div>
                                 <section id="flip-scroll">
                                     <table class="table table-bordered table-striped cf">
                                         <thead class="cf">
                                         <tr>
-                                            <th>Code</th>
-                                            <th>Company</th>
-                                            <th class="numeric">Price</th>
-                                            <th class="numeric">Change</th>
-                                            <th class="numeric">Change %</th>
-                                            <th class="numeric">Open</th>
-                                            <th class="numeric">High</th>
-                                            <th class="numeric">Low</th>
-                                            <th class="numeric">Volume</th>
+                                            <th class="numeric">Имя</th>
+                                            <th class="numeric">Фамилия</th>
+                                            <th class="numeric">Почта</th>
+                                            <th class="numeric">Роль</th>
+                                            <th class="numeric">Активно</th>
+                                            <th class="numeric"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @forelse($users as $user)
                                             <tr>
-                                                <td>AAC</td>
-                                                <td>AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
-                                                <td class="numeric">$1.38</td>
-                                                <td class="numeric">-0.01</td>
-                                                <td class="numeric">-0.36%</td>
-                                                <td class="numeric">$1.39</td>
-                                                <td class="numeric">$1.39</td>
-                                                <td class="numeric">$1.38</td>
-                                                <td class="numeric">9,395</td>
-                                            </tr>
-                                            @empty
-                                            @endforelse
+                                                <td class="numeric">{{ $user->first_name }}</td>
+                                                <td class="numeric">{{ $user->last_name }}</td>
+                                                <td class="numeric">{{ $user->email }}</td>
+                                                <td class="numeric">{{ $user->role_id }}</td>
+                                                <td class="numeric">
+                                                    @if($user->is_active)
+                                                        <span class="status-metro status-active" title="Active">Active</span>
+                                                    @else
+                                                        <span class="status-metro status-disabled" title="Disabled">Disabled</span>
+                                                    @endif
+                                                </td>
+                                                <td class="numeric">
+                                                    <div class="pull-right">
+                                                        <a class="btn btn-warning" href="{{ route('admin.users.show',$user->id) }}">Посмотреть</a>
+                                                        <a class="btn btn-success" href="{{ route('admin.users.edit',$user->id) }}">Редактировать</a>
+                                                        <a class="btn btn-danger" href="{{ route('admin.users.destroy',$user->id) }}">Удалить</a>
+                                                    </div>
 
+                                                </td>
+                                            </tr>
+                                        @empty
+                                        @endforelse
                                         </tbody>
                                     </table>
                                 </section>
@@ -125,4 +135,9 @@
 
         </div>
     </div>
+@endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{ asset('admin/js/button/ladda/ladda.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/js/footable/css/footable-demos.css') }}">
 @endsection

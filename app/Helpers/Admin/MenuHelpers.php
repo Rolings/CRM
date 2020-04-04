@@ -7,10 +7,9 @@ use App\Models\Menu;
 class MenuHelpers
 {
 
-    public static function menu(){
-        return Menu::all();
+    public static function menu()
+    {
+        return Menu::with(['children','parent'])->isActive()->orderBy('order','ASC')->get();
     }
-
-
 
 }

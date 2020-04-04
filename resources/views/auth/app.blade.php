@@ -30,13 +30,13 @@
 @yield('content')
 @include('admin.section.footer.footer')
 
-@yield('style_before')
+@yield('script_before')
 <script type="text/javascript" src="{{ asset('admin/js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/preloader.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/bootstrap.js') }}"></script>
 <script type="text/javascript" src="{{ asset('admin/js/app.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('admin/js/load.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('admin/js/main.js') }}" ></script>
-@yield('style_after')
+@yield('script_after')
 </body>
 </html>

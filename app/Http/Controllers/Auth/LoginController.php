@@ -15,6 +15,9 @@ class LoginController extends Controller
 
     public function index()
     {
+        if (Auth::check()){
+            return redirect()->route('admin.dashboard.index');
+        }
         return view('auth.login');
     }
 
@@ -27,7 +30,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->route('admin.page', 'dashboard');
+            return redirect()->route('admin.dashboard.index');
         }
         return redirect()->route('admin.login');
     }
