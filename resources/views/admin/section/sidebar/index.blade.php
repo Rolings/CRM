@@ -29,8 +29,10 @@
                         </a>
                     </li>
                     @forelse(MenuHelpers::menu() as $menu)
+                        @can('show '.$menu->alias)
                         @if (is_null($menu->parent))
                             @if ($menu->children->count()>0)
+
                                 <li>
                                     <a class="tooltip-tip ajax-load" href="#" title="{{ $menu->name }}">
                                         <i class="{{ $menu->{'fa-icon'} }}"></i>
@@ -45,6 +47,7 @@
                                         @endforelse
                                     </ul>
                                 </li>
+
                             @else
                                 <li>
                                     <a class="tooltip-tip ajax-load" href="{{ route('admin.'.$menu->alias.'.index') }}" title="{{ $menu->name }}">
@@ -54,6 +57,7 @@
                                 </li>
                             @endif
                         @endif
+                        @endcan
                     @empty
                     @endforelse
                     <li>

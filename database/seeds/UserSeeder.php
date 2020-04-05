@@ -14,31 +14,17 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-        $admin             = new User();
-        $admin->name       = 'Дмитрий';
-        $admin->name       = 'Дмитрий';
-        $admin->notification = true;
-        $admin->phone      = '123456';
-        $admin->password   = bcrypt('meganote');
-        $admin->email      = 'sancho@artjoker.ua';
-        $admin->active     = true;
+        $admin                  = new User();
+        $admin->first_name      = 'Дмитрий';
+        $admin->last_name       = 'Шрамко';
+        $admin->phone           = '123456';
+        $admin->password        = Hash::make('secret');
+        $admin->email           = 'admin@admin.com';
+        $admin->is_admin        = true;
+        $admin->active          = true;
+        $admin->notification    = true;
         $admin->save();
 
-
-
-        $users = [
-            [
-                "role_id" => 1,
-                "first_name" => "Дмитрий",
-                "last_name" => "Шрамко",
-                "email" => "admin@admin.com",
-                'is_active'=>true,
-                "password" => Hash::make('secret'),
-            ],
-        ];
-
-        foreach ($users as $user) {
-            User::create($user);
-        }
+        $admin->assignRole(User::SUPERADMIN);
     }
 }

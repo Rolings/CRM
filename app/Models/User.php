@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use Notifiable,UUid,HasRoles,AuthenticableTrait;
 
+    protected $guard_name  = "admin";
+
     const SUPERADMIN = 'Superadmin';
 
     const ADMIN_ROLES
@@ -30,7 +32,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'role_id',
         'first_name',
         'last_name',
         'email',
