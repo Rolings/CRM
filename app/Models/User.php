@@ -6,21 +6,10 @@ use App\Train\UUid;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable,UUid,HasRoles,AuthenticableTrait;
-
-    protected $guard_name  = "admin";
-
-    const SUPERADMIN = 'Superadmin';
-
-    const ADMIN_ROLES
-        = [
-            self::SUPERADMIN,
-        ];
-
+    use Notifiable,UUid,AuthenticableTrait;
 
     protected $keyType = 'string';
     protected $primaryKey = 'id';
@@ -66,7 +55,7 @@ class User extends Authenticatable
 
     public function scopeOnlyActive($query)
     {
-        return $query->whereIsActive(true);
+        return $query->whereActive(true);
     }
 
 

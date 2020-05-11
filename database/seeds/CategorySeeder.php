@@ -1927,8 +1927,9 @@ class CategorySeeder extends Seeder
                 ],
             ];
 
-        $i = 1;
-        foreach ($pagesCategory as $page) {
+        $this->each($pagesCategory);
+   //     $i = 1;
+/*        foreach ($pagesCategory as $page) {
 
             $data = [
                 "name" =>  $page['uk']['name'],
@@ -1969,6 +1970,37 @@ class CategorySeeder extends Seeder
                     }
                 }
             }
+        }*/
+    }
+
+
+    public function each($list, $index = 0, $parent_id = null)
+    {
+        foreach ($list as $index => $value) {
+            $children = null;
+            if (isset($value['child'])) {
+                $children = $value['child'];
+                unset($value['child']);
+                $instance = $this->create($value);
+                $this->each($children, $index, $instance->id);
+            }else{
+                $this->create($value, $index, $parent_id);
+            }
         }
+    }
+
+    protected function create($data, $index = 0, $parent_id = null)
+    {
+        $data['parent_id']  = $parent_id;
+        $data['name']       = $data['uk']['name'];
+        $data['alias']      = Str::slug($data['uk']['name']);
+        $data['order']      = $data['order']??$index;
+        $data['image']      = $data['image']??null;
+        $data['fa-icon']    = $data['fa-icon']??null;
+        unset($data['uk'],$data['en'],$data['en'],$data['category_image']);
+        dd($data);
+
+
+       return   Category::create($data);
     }
 }

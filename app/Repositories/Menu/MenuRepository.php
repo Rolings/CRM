@@ -18,6 +18,11 @@ class MenuRepository implements RepositoryInterface
         $this->model = $model;
     }
 
+    public function find($id)
+    {
+        return $this->find($id);
+    }
+
     // Get all instances of model
     public function all()
     {

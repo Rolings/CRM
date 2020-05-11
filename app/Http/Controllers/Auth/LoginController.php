@@ -9,9 +9,14 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 
-class LoginController extends Controller
+class  LoginController extends Controller
 {
     use AuthenticatesUsers;
+
+    public function redirect()
+    {
+        return redirect()->route('admin.login');
+    }
 
     public function index()
     {

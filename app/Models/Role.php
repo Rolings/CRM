@@ -2,30 +2,22 @@
 
 namespace App\Models;
 
-use \Spatie\Permission\Models\Role as RoleModel;
-use Spatie\Permission\Guard;
+use App\Train\UUid;
+use Illuminate\Database\Eloquent\Model;
 
-
-class Role extends RoleModel
+class Role extends Model
 {
-    public    $guard_name = 'admin';
-    protected $keyType    = 'string';
+    use Uuid;
 
-    /**
-     * Find a role by its names and guard name.
-     *
-     * @param array       $names
-     * @param string|null $guardName
-     *
-     * @return \Spatie\Permission\Contracts\Role|\Spatie\Permission\Models\Role
-     *
-     */
-    public static function findByNames (array $names, $guardName = null)
-    {
-        $guardName = $guardName ?? Guard::getDefaultName(static::class);
-        $roles     = static::whereIn('name', $names)->where('guard_name', $guardName)->get();
+    protected $keyType = 'string';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'id',
+        'name',
+        'guard_name',
+        'active',
+    ];
 
-        return $roles;
-    }
+    public $timestamps = false;
 
 }

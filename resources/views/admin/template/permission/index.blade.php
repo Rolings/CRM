@@ -1,5 +1,6 @@
 @extends('admin.app')
-@section('title',__('admin.users'))
+@section('title','Разрешения')
+
 
 @section('content')
     <div class="wrap-fluid">
@@ -11,7 +12,7 @@
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
                             <span class="entypo-layout"></span>
-                            <span>{{ __('admin.users') }}</span>
+                            <span>Роли</span>
                         </h2>
                     </div>
                 </div>
@@ -22,7 +23,7 @@
             <ul id="breadcrumb">
                 <li><span class="entypo-home"></span></li>
                 <li><i class="fa fa-lg fa-angle-right"></i></li>
-                <li><a href="#" title="Sample page 1">{{ __('admin.users') }}</a></li>
+                <li><a href="#" title="Sample page 1">Роли</a></li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
                         <input style="border-radius:15px" type="text" placeholder="Search..." class="form-control">
@@ -50,68 +51,59 @@
                             </div>
                             <div class="body-nest" id="tableStatic">
                                 <div class="row" style="margin-bottom:10px;">
-                                    <div class="col-sm-4">
-                                        <input class="form-control" id="filter" placeholder="Search..." type="text">
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <select class="filter-status form-control">
-                                            <option value="active">Active</option>
-                                            <option value="disabled">Disabled</option>
-                                            <option value="suspended">Suspended</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <a href="{{ route('admin.users.create') }}" class="btn btn-success dropdown-toggle pull-right" title="Filter using the Filter API">Добавить</a>
+                                    <div class="col-sm-12">
+                                        <a href="{{ route('admin.permissions.create') }}" class="btn btn-success dropdown-toggle pull-right" title="Filter using the Filter API">Добавить</a>
                                     </div>
                                 </div>
                                 <section id="flip-scroll">
                                     <table class="table table-bordered table-striped cf">
                                         <thead class="cf">
                                         <tr>
-                                            <th class="numeric">Имя</th>
-                                            <th class="numeric">Фамилия</th>
-                                            <th class="numeric">Почта</th>
-                                            <th class="numeric">Роль</th>
-                                            <th class="numeric">Активно</th>
+                                            <th class="numeric">Названия</th>
+                                            <th class="numeric">Guard</th>
                                             <th class="numeric"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @forelse($users as $user)
-                                            <tr>
-                                                <td class="numeric">{{ $user->first_name }}</td>
-                                                <td class="numeric">{{ $user->last_name }}</td>
-                                                <td class="numeric">{{ $user->email }}</td>
-                                                <td class="numeric">{{ $user->role_id }}</td>
-                                                <td class="numeric">
-                                                    @if($user->is_active)
-                                                        <span class="status-metro status-active" title="Active">Active</span>
-                                                    @else
-                                                        <span class="status-metro status-disabled" title="Disabled">Disabled</span>
-                                                    @endif
-                                                </td>
-                                                <td class="numeric">
-                                                    <div class="pull-right">
-                                                        <a class="btn btn-warning" href="{{ route('admin.users.show',$user->id) }}">Посмотреть</a>
-                                                        <a class="btn btn-success" href="{{ route('admin.users.edit',$user->id) }}">Редактировать</a>
-                                                        <a class="btn btn-danger" href="{{ route('admin.users.destroy',$user->id) }}">Удалить</a>
-                                                    </div>
+                                        @forelse($permissions as $permission)
+                                            @isset ($permission->id)
+                                                <tr>
+                                                    <td class="numeric">{{ $permission->route }}</td>
+                                                    <td class="numeric">
+                                                        {{ $guardName[$permission->guard_name] }}
+                                                    </td>
+                                                    <td class="numeric">
+                                                        <div class="pull-right">
+                                                            <a class="btn btn-success" href="{{ route('admin.permissions.edit',$permission->id) }}">Редактировать</a>
+                                                            <a class="btn btn-danger" href="{{ route('admin.permissions.destroy',$permission->id) }}">Удалить</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                {{ Form::open(['url'=>route('admin.permissions.store')]) }}
+                                                <tr>
+                                                    <td class="numeric">{{ $permission->route }}</td>
+                                                    <td class="numeric">
+                                                        {{ Form::hidden('route', $permission->route) }}
+                                                        {{ Form::select('guard_name',$guardName,[],['id'=>'guard_name','class'=>'form-control']) }}
+                                                    </td>
+                                                    <td class="numeric">
+                                                        <div class="pull-right">
+                                                            <button type="submit" class="btn btn-success">Создать</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {{ Form::close() }}
 
-                                                </td>
-                                            </tr>
+                                            @endisset
                                         @empty
                                         @endforelse
                                         </tbody>
                                     </table>
                                 </section>
-
                             </div>
-
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
 

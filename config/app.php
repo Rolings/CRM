@@ -179,7 +179,6 @@ return [
          * Package*
          */
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

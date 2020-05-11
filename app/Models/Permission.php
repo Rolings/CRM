@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
-//    use UUid;
+    use Uuid;
+
+    protected $keyType = 'string';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'id',
+        'route',
+        'guard_name',
+        'description',
+    ];
+
+    public $timestamps = false;
+
+
 }

@@ -3,11 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
+use App\Models\Role;
+use App\Repositories\Permission\PermissionRepository;
+use App\Repositories\Permission\RoleRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class RoleController extends Controller
 {
+
+    protected $model;
+    protected $permission;
+    protected $guards;
+
+    public function __construct(Role $role,Permission $permission)
+    {
+        $this->model = new RoleRepository($role);
+        $this->permission = new PermissionRepository($permission);
+        $this->guards = array_keys(config('auth.guards'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +29,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.template.dashboard.index');
+        $data = [
+            'roles'=>$this->model->all(),
+            'guardName' => $this->guards
+        ];
+        return view('admin.template.role.index',$data);
     }
 
     /**
@@ -25,7 +43,11 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'permissions'=> $this->permission->all(),
+            'guardName' => $this->guards
+        ];
+        return view('admin.template.role.create',$data);
     }
 
     /**
@@ -36,7 +58,8 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->model->create($request->only(['name', 'guard_name']));
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -58,7 +81,13 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $model = $this->model->find($id);
+        return view('admin.template.role.edit', [
+            'model'         => $model,
+            'permissions'    => $this->permission->all(),
+            'guardName'     => $this->guards
+        ]);
     }
 
     /**
@@ -70,7 +99,8 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->model->update($request->only(['name', 'guard_name']),$id);
+        return redirect()->route('admin.roles.index');
     }
 
     /**

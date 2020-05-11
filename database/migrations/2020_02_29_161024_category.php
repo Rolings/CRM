@@ -15,17 +15,13 @@ class Category extends Migration
     {
         Schema::create('categories', function ($table) {
             $table->uuid('id')->primary();
-            $table->uuid('parent_id');
+            $table->uuid('parent_id')->nullable($value = true)->default(null);
             $table->string('alias');
             $table->string('name')->nullable($value = true);
             $table->text('description')->nullable($value = true);
-            $table->string('fa-icon')
-                ->nullable($value = true)
-                ->default(null);
+            $table->string('fa-icon')->nullable($value = true)->default(null);
             $table->string('image')->nullable($value = true);
-            $table->integer('order')
-                ->nullable($value = true)
-                ->default(null);
+            $table->integer('order')->nullable($value = true)->default(null);
             $table->timestamps();
         });
     }

@@ -1,2 +1,2 @@
 @extends('admin.app')
-@section('title','Product')
+@section('title','Page')

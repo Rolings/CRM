@@ -1,12 +1,11 @@
 <?php
-
-
-namespace App\Repositories\User;
+namespace App\Repositories\Permission;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Repositories\RepositoryInterface;
 
-class UserRepositories  implements RepositoryInterface
+
+class PermissionRepository implements RepositoryInterface
 {
     // model property on class instances
     protected $model;
@@ -17,15 +16,15 @@ class UserRepositories  implements RepositoryInterface
         $this->model = $model;
     }
 
+    public function find($id)
+    {
+        return $this->model->find($id);
+    }
+
     // Get all instances of model
     public function all()
     {
         return $this->model->all();
-    }
-
-    public function find($id)
-    {
-        return $this->find($id);
     }
 
     // create a new record in the database

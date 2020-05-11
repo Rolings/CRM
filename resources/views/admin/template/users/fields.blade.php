@@ -122,14 +122,7 @@
                                                     <input class="form-control" value="11111122333" type="password">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label"></label>
-                                                <div class="col-md-8">
-                                                    <input class="btn btn-primary" value="Save Changes" type="button">
-                                                    <span></span>
-                                                    <input class="btn btn-default" value="Cancel" type="reset">
-                                                </div>
-                                            </div>
+                                            @include('admin.section.event-button.index')
                                         </form>
                                     </div>
                                 </div>

@@ -33,26 +33,17 @@ class MenuSeeder extends Seeder
                 'is_active'=>1,
                 'order'=>3
             ],
+
             [
                 'parent_id'=>null,
                 'lang'=>'ru',
-                'alias'=>'settings',
-                'name'=>'Settings',
+                'alias'=>'',
+                'name'=>'Administrator',
                 'fa-icon'=>'icon-window',
                 'image'=>'',
                 'is_active'=>1,
-                'order'=>4,
+                'order'=>3,
                 'child'=>[
-                    [
-                        'parent_id'=>null,
-                        'lang'=>'ru',
-                        'alias'=>'setting',
-                        'name'=>'Setting',
-                        'fa-icon'=>'icon-window',
-                        'image'=>'',
-                        'is_active'=>1,
-                        'order'=>5,
-                    ],
                     [
                         'parent_id'=>null,
                         'lang'=>'ru',
@@ -62,6 +53,48 @@ class MenuSeeder extends Seeder
                         'image'=>'',
                         'is_active'=>1,
                         'order'=>6
+                    ],
+                    [
+                        'parent_id'=>null,
+                        'lang'=>'ru',
+                        'alias'=>'permissions',
+                        'name'=>'Permissions',
+                        'fa-icon'=>'icon-window',
+                        'image'=>'',
+                        'is_active'=>1,
+                        'order'=>1
+                    ],
+                    [
+                        'parent_id'=>null,
+                        'lang'=>'ru',
+                        'alias'=>'roles',
+                        'name'=>'Roles',
+                        'fa-icon'=>'entypo-user',
+                        'image'=>'',
+                        'is_active'=>1,
+                        'order'=>7
+                    ],
+                ]
+            ],
+            [
+                'parent_id'=>null,
+                'lang'=>'ru',
+                'alias'=>'settings',
+                'name'=>'Settings',
+                'fa-icon'=>'icon-gear',
+                'image'=>'',
+                'is_active'=>1,
+                'order'=>4,
+                'child'=>[
+                    [
+                        'parent_id'=>null,
+                        'lang'=>'ru',
+                        'alias'=>'setting',
+                        'name'=>'Setting',
+                        'fa-icon'=>'icon-gear',
+                        'image'=>'',
+                        'is_active'=>1,
+                        'order'=>5,
                     ],
                 ]
             ],
