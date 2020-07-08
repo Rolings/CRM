@@ -16,7 +16,7 @@
                 </td>
                 <td class="numeric">
                     <div class="pull-right">
-                        {!! Form::checkbox('name', 'value', true,['id'=>$permission->id]) !!}
+                        {!! Form::checkbox('permission[]', $permission->id, null,['id'=>$permission->id]) !!}
                     </div>
                 </td>
             </tr>

@@ -36,8 +36,8 @@ class RoleRepository implements RepositoryInterface
     // update record in the database
     public function update(array $data, $id)
     {
-        $record = $this->find($id);
-        return $record->update($data);
+
+        return $this->find($id)->update($data);
     }
 
     // remove record from the database

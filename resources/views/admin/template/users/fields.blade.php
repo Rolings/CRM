@@ -1,139 +1,70 @@
-<div class="wrap-fluid">
-    <div class="container-fluid paper-wrap bevel tlbr">
-        @include('admin.section.page-title.index')
-        @include('admin.section.breadcrumb.index')
-        <div class="content-wrap">
-            <div class="row">
-                <div class="row">
-
-
-                    <div class="col-sm-12">
-                        <!-- BLANK PAGE-->
-
-                        <div style="margin:-20px 15px;" class="nest" id="Blank_PageClose">
-                            <div class="title-alt">
-                                <h6>
-                                    Edit Profile</h6>
-                                <div class="titleClose">
-                                    <a class="gone" href="#Blank_PageClose">
-                                        <span class="entypo-cancel"></span>
-                                    </a>
-                                </div>
-                                <div class="titleToggle">
-                                    <a class="nav-toggle-alt" href="#Blank_Page_Content">
-                                        <span class="entypo-up-open"></span>
-                                    </a>
-                                </div>
-
-                            </div>
-
-                            <div class="body-nest" id="Blank_Page_Content">
-
-
-                                <div class="row">
-
-
-                                    <!-- left column -->
-                                    <div class="col-md-3">
-                                        <div class="text-center">
-                                            <img src="http://placehold.it/150" class="avatar img-circle" alt="avatar">
-                                            <h6>Upload a different photo...</h6>
-
-                                            <div class="input-group">
-                                                    <span class="input-group-btn">
-                                                        <span class="btn btn-primary btn-file">
-                                                            Browse
-                                                            <input type="file" multiple="">
-                                                        </span>
-                                                    </span>
-                                                <input type="text" class="form-control">
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <!-- edit form column -->
-                                    <div class="col-md-9 personal-info">
-                                        <div class="alert alert-info alert-dismissable">
-                                            <a class="panel-close close" data-dismiss="alert">×</a>
-                                            <i class="fa fa-coffee"></i>
-                                            This is an
-                                            <strong>.alert</strong>. Use this to show important messages to the user.
-                                        </div>
-                                        <h3>Personal info</h3>
-
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">First name:</label>
-                                                <div class="col-lg-8">
-                                                    <input class="form-control" value="Jane" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Last name:</label>
-                                                <div class="col-lg-8">
-                                                    <input class="form-control" value="Bishop" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Company:</label>
-                                                <div class="col-lg-8">
-                                                    <input class="form-control" value="" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Email:</label>
-                                                <div class="col-lg-8">
-                                                    <input class="form-control" value="janesemail@gmail.com" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-3 control-label">Time Zone:</label>
-                                                <div class="col-lg-8">
-                                                    <div class="ui-select">
-                                                        <select id="user_time_zone" class="form-control">
-                                                            <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                                                            <option value="Alaska">(GMT-09:00) Alaska</option>
-                                                            <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                                                            <option value="Arizona">(GMT-07:00) Arizona</option>
-                                                            <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                                                            <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                                                            <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                                                            <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Username:</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" value="janeuser" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Password:</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" value="11111122333" type="password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Confirm password:</label>
-                                                <div class="col-md-8">
-                                                    <input class="form-control" value="11111122333" type="password">
-                                                </div>
-                                            </div>
-                                            @include('admin.section.event-button.index')
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END OF BLANK PAGE -->
-
-                </div>
-            </div>
+<!-- left column -->
+<div class="col-md-3">
+    <div class="text-center">
+        <img src="{{$model->publicAvatar}}" class="avatar img-circle" alt="avatar" width="200"  height="200">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-file">
+                    Browse
+                    {{ Form::file('avatar') }}
+                </span>
+            </span>
+            <input type="text" class="form-control">
         </div>
     </div>
+</div>
+<!-- edit form column -->
+<div class="col-md-9 personal-info">
+    <h3>Personal info</h3>
+
+    <div class="form-group">
+        {{ Form::label('first_name', 'First name:',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {{ Form::text('first_name',old('first_name'),['id'=>'first_name','class'=>'form-control']) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('last_name', 'Last name:',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {{ Form::text('last_name',old('last_name'),['id'=>'last_name','class'=>'form-control']) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('email', 'Email:',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {{ Form::email('email',old('email'),['id'=>'email','class'=>'form-control']) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('phone', 'Phone:',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {{ Form::text('phone',old('phone'),['id'=>'phone','class'=>'form-control']) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('password', 'Password:',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {{ Form::password('password',['id'=>'password','class'=>'form-control']) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('confirm_password', 'Confirm password:',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {{ Form::password('confirm_password',['id'=>'confirm_password','class'=>'form-control']) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('active', 'Active',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {!! Form::checkbox('active', 1, old('active'),['id'=>'active']) !!}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ Form::label('notification', 'Notification',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {!! Form::checkbox('notification', 1, old('notification'),['id'=>'notification']) !!}
+        </div>
+    </div>
+    @include('admin.section.event-button.index')
 </div>
 

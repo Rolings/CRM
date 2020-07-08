@@ -15,11 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('role_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique()->nullable();
             $table->string('phone')->unique()->nullable();
-            $table->string('image')->nullable();
+            $table->string('avatar')->nullable();
             $table->string('password');
             $table->boolean('active')->nullable();
             $table->boolean('notification')->nullable($value=false);
@@ -28,6 +29,10 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('cascade');
         });
     }
 

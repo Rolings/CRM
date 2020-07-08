@@ -10,8 +10,6 @@
             <div class="content-wrap">
                 <div class="row">
                     <div class="row">
-
-
                         <div class="col-sm-12">
                             <div class="nest" id="tabClose">
                                 <div class="title-alt">
@@ -29,17 +27,17 @@
                                     </div>
                                 </div>
                                 <div class="body-nest" id="tab">
+                                    {{ Form::model($model, ['route' =>['admin.roles.update',$model->id],'class'=>'form-horizontal','role'=>'form','method'=>'PATCH']) }}
                                     <div id="wizard-tab">
                                         <h2>Role</h2>
                                         <section>
-                                            {{ Form::model($model, ['route' =>['admin.roles.update',$model->id],'class'=>'form-horizontal','role'=>'form','method'=>'PUT']) }}
                                             @include('admin.template.role.fields',collect('permissions','guardName'))
-                                            {{ Form::close() }}
                                         </section>
                                         <h2>Permission for role</h2>
                                         <section>
                                             @include('admin.template.role.include.permission',collect('permissions','guardName'))
                                         </section>
+                                        {{ Form::close() }}
                                     </div>
                                 </div>
                             </div>

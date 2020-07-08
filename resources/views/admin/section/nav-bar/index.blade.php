@@ -22,7 +22,7 @@
                     <ul style="margin: 11px 0 0 9px;" role="menu" class="dropdown-menu dropdown-wrap">
                         <li>
                             <a href="#">
-                                <img alt="" class="img-msg img-circle" src="http://api.randomuser.me/portraits/thumb/men/1.jpg">{{ Auth::user()->first_name }} <b>{{ Auth::user()->last_name }}</b>
+                                <img alt="" class="img-msg img-circle" src="{{ Auth::user()->publicAvatar }}">{{ Auth::user()->first_name }} <b>{{ Auth::user()->last_name }}</b>
                             </a>
                         </li>
                         <li class="divider"></li>
@@ -119,24 +119,16 @@
             <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
                 <li>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" class="admin-pic img-circle" src="{{ asset('admin/img/no_avatar.png') }}">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <b class="caret"></b>
+                        <img alt="" class="admin-pic img-circle" src="{{ Auth::user()->publicAvatar }}">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <b class="caret"></b>
                     </a>
                     <ul style="margin-top:14px;" role="menu" class="dropdown-setting dropdown-menu">
                         <li>
                             <a href="{{ route('admin.users.show',Auth::user()->id) }}">
                                 <span class="entypo-user"></span>&#160;&#160;My Profile</a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <span class="entypo-vcard"></span>&#160;&#160;Account Setting</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="entypo-lifebuoy"></span>&#160;&#160;Help</a>
-                        </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
+                            <a href="{{ route('admin.logout') }}">
                                 <span class="entypo-logout"></span>&#160;&#160;Logout</a>
                         </li>
                     </ul>

@@ -5,6 +5,8 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\User\UserRepositories;
+use Illuminate\Support\Facades\Hash;
+use App\Helpers\Admin\UserHelper;
 
 class UserController extends Controller
 {
@@ -45,7 +47,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->merge(['active' => $request->active??0]);
+        $request->merge(['notification' => $request->notification??0]);
+        $this->model->create($request->only([
+            'first_name',
+            'last_name',
+            'email',
+            'phone',
+            'notification',
+        ]));
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -70,7 +81,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.template.users.edit');
+        $model = $this->model->find($id);
+        return view('admin.template.users.edit',[
+            'model'         => $model,
+        ]);
     }
 
     /**
@@ -82,7 +96,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = [
+            'first_name',
+            'last_name',
+            'email',
+            'phone',
+            'active',
+            'notification',
+        ];
+        if (!is_null($request->password) && ($request->password === $request->confirm_password)) {
+            $data = array_merge($data, ['password']);
+        }
+        $request->merge(['active' => $request->active ?? false]);
+        $request->merge(['notification' => $request->notification ?? false]);
+
+        $this->model->update($request->only($data), $id);
+        if ($request->hasFile('avatar')) {
+            UserHelper::saveUserAvatar($request, $this->model, $id);
+        }
+        return redirect()->route('admin.users.index');
     }
 
     /**

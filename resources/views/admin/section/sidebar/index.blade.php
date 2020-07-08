@@ -59,7 +59,7 @@
                     <li>
                         <a class="tooltip-tip " href="{{ route('admin.logout') }}" title="login">
                             <i class="icon-download"></i>
-                            <span>Login</span>
+                            <span>Logout</span>
                         </a>
                     </li>
 

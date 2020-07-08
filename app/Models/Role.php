@@ -20,4 +20,14 @@ class Role extends Model
 
     public $timestamps = false;
 
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function permission()
+    {
+        return $this->hasMany(Permission::class);
+    }
+
 }

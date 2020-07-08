@@ -58,7 +58,12 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->model->create($request->only(['name', 'guard_name']));
+        $request->merge(['active' => $request->active??0]);
+        $model = $this->model->create($request->only(['name', 'guard_name','active']));
+        if (isset($request->permission)){
+            $model->permission->attach($request->permission);
+        }
+
         return redirect()->route('admin.roles.index');
     }
 
@@ -81,11 +86,10 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-
         $model = $this->model->find($id);
         return view('admin.template.role.edit', [
             'model'         => $model,
-            'permissions'    => $this->permission->all(),
+            'permissions'   => $this->permission->all(),
             'guardName'     => $this->guards
         ]);
     }
@@ -99,7 +103,12 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->model->update($request->only(['name', 'guard_name']),$id);
+      // dd($request->permission);
+        $request->merge(['active' => $request->active??0]);
+        $model = $this->model->update($request->only(['name', 'guard_name','active']),$id);
+        if (isset($request->permission)){
+            $model->permission->sync(collect($request->permission));
+        }
         return redirect()->route('admin.roles.index');
     }
 
@@ -111,6 +120,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->model->delete($id);
+        return redirect()->route('admin.roles.index');
     }
 }

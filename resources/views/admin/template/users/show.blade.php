@@ -18,59 +18,18 @@
                                             <span class="entypo-user"></span>&nbsp;&nbsp;Profile
                                         </li>
                                         <li class="list-group-item text-center">
-                                            <img src="http://api.randomuser.me/portraits/men/10.jpg" alt="" class="img-circle img-responsive img-profile">
-
+                                            <img src="{{$user->publicAvatar}}" alt="" class="img-circle img-responsive img-profile" width="200" height="200">
                                         </li>
-                                        <li class="list-group-item text-center">
-                                            <span class="pull-left">
-                                                <strong>Ratings</strong>
-                                            </span>
-
-
-                                            <div class="ratings">
-
-                                                <a href="#">
-                                                    <span class="fa fa-star"></span>
-                                                </a>
-                                                <a href="#">
-                                                    <span class="fa fa-star"></span>
-                                                </a>
-                                                <a href="#">
-                                                    <span class="fa fa-star"></span>
-                                                </a>
-                                                <a href="#">
-                                                    <span class="fa fa-star"></span>
-                                                </a>
-                                                <a href="#">
-                                                    <span class="fa fa-star-o"></span>
-                                                </a>
-
-                                            </div>
-
-
-                                        </li>
-
                                         <li class="list-group-item text-right">
                                             <span class="pull-left">
                                                 <strong>Joined</strong>
-                                            </span>2.13.2014
+                                            </span> {{ $user->created_at }}
                                         </li>
-                                        <li class="list-group-item text-right">
-                                            <span class="pull-left">
-                                                <strong>Last seen</strong>
-                                            </span>Yesterday
-                                        </li>
-                                        <li class="list-group-item text-right">
-                                            <span class="pull-left">
-                                                <strong>Nickname</strong>
-                                            </span>themesmile
-                                        </li>
-
                                     </ul>
 
                                 </div>
                                 <div class="col-xs-12 col-sm-8 profile-name">
-                                    <h2>Dave Mattew
+                                    <h2>{{ $user->first_name }} {{ $user->last_name }}
                                         <span class="pull-right social-profile">
                                             <i class="entypo-facebook-circled"></i>  <i class="entypo-twitter-circled"></i>  <i class="entypo-linkedin-circled"></i>  <i class="entypo-github-circled"></i>  <i class="entypo-gplus-circled"></i>
                                         </span>
@@ -94,7 +53,12 @@
                                         <dd>{{ $user->phone }}</dd>
 
                                         <dt>Active</dt>
-                                        <dd>{{ $user->is_active }}</dd>
+                                        <dd> @if($user->active)
+                                                <span class="status-metro status-active" title="Active">Active</span>
+                                            @else
+                                                <span class="status-metro status-disabled" title="Disabled">Disabled</span>
+                                            @endif
+                                        </dd>
 
                                     </dl>
                                     <hr>
@@ -109,37 +73,11 @@
                             </div>
                             <div class="col-xs-12 divider text-center">
                                 <div class="col-xs-12 col-sm-4 emphasis">
-                                    <h2>
-                                        <strong>20,7K</strong>
-                                    </h2>
-                                    <p>
-                                        <small>Followers</small>
-                                    </p>
-                                    <button class="btn btn-success btn-block">
-                                        <span class="fa fa-plus-circle"></span>&nbsp;&nbsp;Follow
-                                    </button>
+
                                 </div>
                                 <div class="col-xs-12 col-sm-4 emphasis">
-                                    <h2>
-                                        <strong>245</strong>
-                                    </h2>
-                                    <p>
-                                        <small>Following</small>
-                                    </p>
-                                    <button class="btn btn-info btn-block">
-                                        <span class="fa fa-user"></span>&nbsp;&nbsp;View Profile
-                                    </button>
                                 </div>
                                 <div class="col-sm-4 emphasis">
-                                    <h2>
-                                        <strong>43</strong>
-                                    </h2>
-                                    <p>
-                                        <small>Likes</small>
-                                    </p>
-                                    <button class="btn btn-default btn-block">
-                                        <span class="fa fa-user"></span>&nbsp;&nbsp;Likes
-                                    </button>
                                 </div>
                             </div>
                         </div>

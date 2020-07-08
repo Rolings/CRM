@@ -391,6 +391,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 .form-control:focus {
     border-color:#45B6B0!important;
     outline: 0;
+    color: black;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
 }

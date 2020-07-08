@@ -46,9 +46,6 @@
             </div>
         </div>
     </div>
-
-
-
 @endsection
 
 @section('style')

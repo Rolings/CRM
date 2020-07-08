@@ -10,4 +10,10 @@
         {{ Form::select('guard_name',$guardName,$model->guard_name??[],['id'=>'guard_name','class'=>'form-control']) }}
     </div>
 </div>
+<div class="form-group">
+    {{ Form::label('active', 'Active',['class'=>'col-lg-3 control-label']) }}
+    <div class="col-lg-8">
+        {!! Form::checkbox('active', 1, old('active'),['id'=>'active']) !!}
+    </div>
+</div>
 @include('admin.section.event-button.index')

@@ -43,24 +43,6 @@ class CreatePermission extends Migration
                 ->on('permissions')
                 ->onDelete('cascade');
         });
-
-
-        Schema::create('role_user', function (Blueprint $table) {
-            $table->uuid('role_id');
-            $table->uuid('user_id');
-
-            $table->foreign('role_id')
-                ->references('id')
-                ->on('roles')
-                ->onDelete('cascade');
-
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-        });
-
-
     }
 
     /**
@@ -70,7 +52,6 @@ class CreatePermission extends Migration
      */
     public function down()
     {
-        Schema::drop('role_user');
         Schema::drop('role_permission');
         Schema::drop('roles');
         Schema::drop('permissions');

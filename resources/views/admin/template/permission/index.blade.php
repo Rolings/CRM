@@ -12,7 +12,7 @@
                     <div class="col-sm-3">
                         <h2 class="tittle-content-header">
                             <span class="entypo-layout"></span>
-                            <span>Роли</span>
+                            <span>Разрешения</span>
                         </h2>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
             <ul id="breadcrumb">
                 <li><span class="entypo-home"></span></li>
                 <li><i class="fa fa-lg fa-angle-right"></i></li>
-                <li><a href="#" title="Sample page 1">Роли</a></li>
+                <li><a href="#" title="Sample page 1">Разрешения</a></li>
                 <li class="pull-right">
                     <div class="input-group input-widget">
                         <input style="border-radius:15px" type="text" placeholder="Search..." class="form-control">
@@ -36,7 +36,7 @@
                     <div class="col-sm-12">
                         <div class="nest" id="tableStaticClose">
                             <div class="title-alt">
-                                <h6>Basic Responsive Tables</h6>
+                                <h6>Разрешения</h6>
 
                                 <div class="titleClose">
                                     <a class="gone" href="#tableStaticClose">
@@ -94,7 +94,6 @@
                                                     </td>
                                                 </tr>
                                                 {{ Form::close() }}
-
                                             @endisset
                                         @empty
                                         @endforelse

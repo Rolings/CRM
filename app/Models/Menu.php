@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Train\UUid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Menu extends Model
 {
@@ -22,9 +23,14 @@ class Menu extends Model
         return $this->hasMany(Menu::class, 'parent_id', 'id');
     }
 
+    public function setAliasAttribute($value)
+    {
+        $this->attributes['alias'] = Str::slug($value);
+    }
+
     public function scopeIsActive($query)
     {
-        return $query->whereIsActive(true);
+        return $query->where('is_active',true);
     }
 
 }

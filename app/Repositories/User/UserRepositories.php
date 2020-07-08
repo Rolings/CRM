@@ -25,7 +25,7 @@ class UserRepositories  implements RepositoryInterface
 
     public function find($id)
     {
-        return $this->find($id);
+        return $this->model->find($id);
     }
 
     // create a new record in the database

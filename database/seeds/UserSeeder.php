@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\{User};
+use App\Models\{User,Role};
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
@@ -14,6 +14,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $admin                  = new User();
+        $admin->role_id         = Role::whereName('root')->first()->id;
         $admin->first_name      = 'Дмитрий';
         $admin->last_name       = 'Шрамко';
         $admin->phone           = '123456';

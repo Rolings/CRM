@@ -37,7 +37,7 @@ class MenuSeeder extends Seeder
             [
                 'parent_id'=>null,
                 'lang'=>'ru',
-                'alias'=>'',
+                'alias'=>'Administrator',
                 'name'=>'Administrator',
                 'fa-icon'=>'icon-window',
                 'image'=>'',

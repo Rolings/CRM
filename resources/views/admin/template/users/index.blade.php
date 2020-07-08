@@ -82,9 +82,9 @@
                                                 <td class="numeric">{{ $user->first_name }}</td>
                                                 <td class="numeric">{{ $user->last_name }}</td>
                                                 <td class="numeric">{{ $user->email }}</td>
-                                                <td class="numeric">{{ $user->role_id }}</td>
+                                                <td class="numeric">{{ $user->role->name }}</td>
                                                 <td class="numeric">
-                                                    @if($user->is_active)
+                                                    @if($user->active)
                                                         <span class="status-metro status-active" title="Active">Active</span>
                                                     @else
                                                         <span class="status-metro status-disabled" title="Disabled">Disabled</span>
@@ -96,7 +96,6 @@
                                                         <a class="btn btn-success" href="{{ route('admin.users.edit',$user->id) }}">Редактировать</a>
                                                         <a class="btn btn-danger" href="{{ route('admin.users.destroy',$user->id) }}">Удалить</a>
                                                     </div>
-
                                                 </td>
                                             </tr>
                                         @empty
@@ -104,14 +103,9 @@
                                         </tbody>
                                     </table>
                                 </section>
-
                             </div>
-
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
 

@@ -36,7 +36,7 @@
                     <div class="col-sm-12">
                         <div class="nest" id="tableStaticClose">
                             <div class="title-alt">
-                                <h6>Basic Responsive Tables</h6>
+                                <h6></h6>
 
                                 <div class="titleClose">
                                     <a class="gone" href="#tableStaticClose">
@@ -50,11 +50,7 @@
                                 </div>
                             </div>
                             <div class="body-nest" id="tableStatic">
-                                <div class="row" style="margin-bottom:10px;">
-                                    <div class="col-sm-12">
-                                        <a href="{{ route('admin.roles.create') }}" class="btn btn-success dropdown-toggle pull-right" title="Filter using the Filter API">Добавить</a>
-                                    </div>
-                                </div>
+                                @include('admin.section.button.control',['create'=>route('admin.roles.create')])
                                 <section id="flip-scroll">
                                     <table class="table table-bordered table-striped cf">
                                         <thead class="cf">
@@ -71,17 +67,17 @@
                                                 <td class="numeric">{{ $role->name }}</td>
                                                 <td class="numeric">{{ $role->guard_name }}</td>
                                                 <td class="numeric">
-                                                    @if($role->is_active)
+                                                    @if($role->active)
                                                         <span class="status-metro status-active" title="Active">Active</span>
                                                     @else
                                                         <span class="status-metro status-disabled" title="Disabled">Disabled</span>
                                                     @endif
                                                 </td>
                                                 <td class="numeric">
-                                                    <div class="pull-right">
-                                                        <a class="btn btn-success" href="{{ route('admin.roles.edit',$role->id) }}">Редактировать</a>
-                                                        <a class="btn btn-danger" href="{{ route('admin.roles.destroy',$role->id) }}">Удалить</a>
-                                                    </div>
+                                                    @include('admin.section.button.control',[
+                                                        'edit'=>route('admin.roles.edit',$role->id),
+                                                        'delete'=>route('admin.roles.edit',$role->id),
+                                                    ])
                                                 </td>
                                             </tr>
                                         @empty
