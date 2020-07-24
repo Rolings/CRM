@@ -33,17 +33,17 @@
                                         <section>
                                             @include('admin.template.role.fields',collect('permissions','guardName'))
                                         </section>
+
                                         <h2>Permission for role</h2>
                                         <section>
-                                            @include('admin.template.role.include.permission',collect('permissions','guardName'))
+                                            @include('admin.template.role.include.permission',collect('permissions','guardName','model'))
                                         </section>
+
                                         {{ Form::close() }}
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

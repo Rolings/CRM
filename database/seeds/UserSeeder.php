@@ -21,7 +21,20 @@ class UserSeeder extends Seeder
         $admin->password        = Hash::make('secret');
         $admin->email           = 'admin@admin.com';
         $admin->active          = true;
-        $admin->notification     = true;
+        $admin->notification    = true;
         $admin->save();
+
+        $admin                  = new User();
+        $admin->role_id         = Role::whereName('manager')->first()->id;
+        $admin->first_name      = 'Robert';
+        $admin->last_name       = 'Manager';
+        $admin->phone           = '1233321';
+        $admin->password        = Hash::make('secret');
+        $admin->email           = 'client@client.com';
+        $admin->active          = true;
+        $admin->notification    = true;
+        $admin->save();
+
+
     }
 }

@@ -29,7 +29,7 @@ class CreatePermission extends Migration
             $table->timestamps();
         });
 
-        Schema::create('role_permission', function (Blueprint $table) {
+        Schema::create('permission_role', function (Blueprint $table) {
             $table->uuid('role_id');
             $table->uuid('permission_id');
 
@@ -52,7 +52,7 @@ class CreatePermission extends Migration
      */
     public function down()
     {
-        Schema::drop('role_permission');
+        Schema::drop('permission_role');
         Schema::drop('roles');
         Schema::drop('permissions');
     }

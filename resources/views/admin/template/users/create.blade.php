@@ -28,8 +28,8 @@
                                 </div>
                                 <div class="body-nest" id="Blank_Page_Content">
                                     <div class="row">
-                                        {{ Form::model(null, ['route' =>['admin.users.store'],'class'=>'form-horizontal','role'=>'form','method'=>'PUT','enctype'=>'multipart/form-data']) }}
-                                            @include('admin.template.users.fields')
+                                        {{ Form::model(null, ['route' =>['admin.users.store'],'class'=>'form-horizontal','role'=>'form','method'=>'POST','enctype'=>'multipart/form-data']) }}
+                                            @include('admin.template.users.fields',['roles'=>$roles])
                                         {{ Form::close() }}
                                     </div>
                                 </div>

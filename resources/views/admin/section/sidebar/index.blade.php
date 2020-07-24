@@ -1,7 +1,7 @@
 <!-- SIDE MENU -->
 <div id="skin-select">
     <div id="logo">
-        <h1>ADMIN</h1>
+        <h1>{{ Auth::user()->role->name }}</h1>
     </div>
     <a id="toggle">
         <span class="entypo-menu"></span>

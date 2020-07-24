@@ -21,6 +21,11 @@ class RoleSeeder extends Seeder
                 'name' => 'root',
                 'guard_name' => 1,
                 'active' => 1
+            ],
+            [
+                'name' => 'manager',
+                'guard_name' => 1,
+                'active' => 1
             ]
         ];
 

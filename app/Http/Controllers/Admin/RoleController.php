@@ -61,7 +61,7 @@ class RoleController extends Controller
         $request->merge(['active' => $request->active??0]);
         $model = $this->model->create($request->only(['name', 'guard_name','active']));
         if (isset($request->permission)){
-            $model->permission->attach($request->permission);
+            $this->model->find($model->id)->permissions()->attach($request->permission);
         }
 
         return redirect()->route('admin.roles.index');
@@ -86,7 +86,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $model = $this->model->find($id);
+        $model = $this->model->with(['permissions'])->find($id);
         return view('admin.template.role.edit', [
             'model'         => $model,
             'permissions'   => $this->permission->all(),
@@ -103,11 +103,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-      // dd($request->permission);
         $request->merge(['active' => $request->active??0]);
-        $model = $this->model->update($request->only(['name', 'guard_name','active']),$id);
+        $this->model->update($request->only(['name', 'guard_name','active']),$id);
+        $role = $this->model->find($id);
         if (isset($request->permission)){
-            $model->permission->sync(collect($request->permission));
+            $role->permissions()->sync($request->permission);
+        }else{
+            $role->permissions()->detach();
         }
         return redirect()->route('admin.roles.index');
     }

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserAuthenticate
 {
@@ -16,7 +17,9 @@ class UserAuthenticate
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::guard('admin')->check()) {
+        if (!Auth::guard('admin')->check() || !Auth::user()->active || !Auth::user()->role->active) {
+            Auth::logout();
+            Session::flush();
             return redirect()->route('admin.login');
         }
         return $next($request);

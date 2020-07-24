@@ -91,11 +91,12 @@
                                                     @endif
                                                 </td>
                                                 <td class="numeric">
-                                                    <div class="pull-right">
-                                                        <a class="btn btn-warning" href="{{ route('admin.users.show',$user->id) }}">Посмотреть</a>
-                                                        <a class="btn btn-success" href="{{ route('admin.users.edit',$user->id) }}">Редактировать</a>
-                                                        <a class="btn btn-danger" href="{{ route('admin.users.destroy',$user->id) }}">Удалить</a>
-                                                    </div>
+                                                    @include('admin.section.button.control',[
+                                                         'delete'=>route('admin.users.destroy',$user->id),
+                                                         'edit'=>route('admin.users.edit',$user->id),
+                                                         'show'=>route('admin.users.show',$user->id),
+                                                     ])
+
                                                 </td>
                                             </tr>
                                         @empty

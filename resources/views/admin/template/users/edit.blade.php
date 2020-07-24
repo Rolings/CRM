@@ -29,7 +29,7 @@
                                 <div class="body-nest" id="Blank_Page_Content">
                                     <div class="row">
                                         {{ Form::model($model, ['route' =>['admin.users.update',$model->id],'class'=>'form-horizontal','role'=>'form','method'=>'PUT','enctype'=>'multipart/form-data']) }}
-                                            @include('admin.template.users.fields')
+                                            @include('admin.template.users.fields',['roles'=>$roles])
                                         {{ Form::close() }}
                                     </div>
                                 </div>

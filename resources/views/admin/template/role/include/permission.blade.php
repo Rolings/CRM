@@ -16,7 +16,7 @@
                 </td>
                 <td class="numeric">
                     <div class="pull-right">
-                        {!! Form::checkbox('permission[]', $permission->id, null,['id'=>$permission->id]) !!}
+                        {!! Form::checkbox('permission[]', $permission->id, $model->permissions->find($permission->id),['id'=>$permission->id]) !!}
                     </div>
                 </td>
             </tr>
@@ -25,3 +25,4 @@
         </tbody>
     </table>
 </section>
+@include('admin.section.event-button.index')

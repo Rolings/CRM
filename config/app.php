@@ -232,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'MenuHelpers'=>\App\Helpers\Admin\MenuHelpers::class,
         'UserHelper'=>\App\Helpers\Admin\UserHelper::class,
+        'PermissionHelper'=>\App\Helpers\Admin\PermissionHelper::class,
     ],
 
 ];

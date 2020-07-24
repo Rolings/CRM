@@ -25,9 +25,14 @@ class Role extends Model
         return $this->hasMany(User::class);
     }
 
-    public function permission()
+    public function permissions()
     {
-        return $this->hasMany(Permission::class);
+        return $this->belongsToMany(Permission::class);
+    }
+
+    public function scopeIsRoot($query)
+    {
+        return $query->where('name', 'root');
     }
 
 }

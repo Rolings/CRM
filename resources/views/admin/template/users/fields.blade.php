@@ -1,7 +1,7 @@
 <!-- left column -->
 <div class="col-md-3">
     <div class="text-center">
-        <img src="{{$model->publicAvatar}}" class="avatar img-circle" alt="avatar" width="200"  height="200">
+        <img src="{{$model->publicAvatar??'http://placehold.it/150'}}" class="avatar img-circle" alt="avatar" width="200"  height="200">
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-primary btn-file">
@@ -41,6 +41,14 @@
             {{ Form::text('phone',old('phone'),['id'=>'phone','class'=>'form-control']) }}
         </div>
     </div>
+    <div class="form-group">
+        {{ Form::label('role', 'Role:',['class'=>'col-lg-3 control-label']) }}
+        <div class="col-lg-8">
+            {{ Form::select('role_id',$roles->pluck('name','id'),old('role_id'),['id'=>'role','class'=>'form-control']) }}
+        </div>
+    </div>
+
+
     <div class="form-group">
         {{ Form::label('password', 'Password:',['class'=>'col-lg-3 control-label']) }}
         <div class="col-lg-8">

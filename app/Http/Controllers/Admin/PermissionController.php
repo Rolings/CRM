@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Permission;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
+use App\Helpers\Admin\PermissionHelper;
 
 class PermissionController extends Controller
 {
@@ -28,39 +29,9 @@ class PermissionController extends Controller
     public function index()
     {
         $model = $this->model->all();
-        $routeCollection = collect(Route::getRoutes())
-            ->map(function ($route) {
-                return ([
-                    'id' => null,
-                    'route' => $route->getName(),
-                    'guard_name' => null,
-                    'description'=> null,
-                    'created_at' => null,
-                    'updated_at' => null,
-                ]);
-            })
-            ->filter(function ($value) {
-                return $value['route'] ?? false;
-            });
-
-
-        $existRoute = $model->pluck('route')->toArray();
-        $routeCollection = $routeCollection->map(function ($item, $key) use ($existRoute) {
-            return !in_array($item['route'], $existRoute) ? $item : null;
-        })->filter(function ($value) {
-            return $value['route'] ?? false;
-        });
-        $model->reduce(function ($carry, $item) use (&$routeCollection) {
-            $routeCollection->push($item->toArray());
-        });
-        $routeCollection = collect($routeCollection->map(function ($value) {
-            return (object)$value;
-        }))
-            ->sortBy(['route'])
-            ->unique('route');
-
+        $routeCollection = PermissionHelper::getRouteCollectionFoRole($model);
         $data = [
-            'permissions' =>$routeCollection,
+            'permissions' => $routeCollection,
             'guardName' => $this->guards
         ];
 
