@@ -1,0 +1,13 @@
+import("./bootstrap.js");
+window.Popper = require('popper.js').default;
+window.$ = window.jQuery = $ = jQuery = require('jquery');
+require('bootstrap');
+import("./libs/jquery-ui-1.8.23.custom.min.js");
+import("./libs/jquery.mousewheel.min.js");
+import("./libs/jquery.kinetic.js");
+import("./libs/jquery.smoothdivscroll-1.3-min.js");
+import("./libs/jquery.tabSlideOut.v1.2.js");
+import("./libs/jquery.fancybox.pack.js");
+import("./libs/jquery.fancybox-buttons.js");
+import("./libs/jquery.fancybox-media.js");
+import("./libs/jquery.fancybox-thumbs.js");

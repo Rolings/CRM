@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'cookie'),
+    'driver' => env('SESSION_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,10 +124,11 @@ return [
     |
     */
 
-    'cookie' => env(
+    'cookie' => 'laravelsession',
+ /*   'cookie' => env(
         'SESSION_COOKIE',
         Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
-    ),
+    ),*/
 
     /*
     |--------------------------------------------------------------------------
@@ -190,7 +191,7 @@ return [
     | take place, and can be used to mitigate CSRF attacks. By default, we
     | do not enable this as other CSRF protection services are in place.
     |
-    | Supported: "lax", "strict", "none"
+    | Supported: "lax", "strict"
     |
     */
 
