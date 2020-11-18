@@ -40,6 +40,7 @@ class PermissionHelper
         }))
             ->sortBy(['route'])
             ->unique('route');
+
         return $routeCollection;
     }
 

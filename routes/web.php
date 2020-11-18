@@ -32,19 +32,6 @@ Route::group(['namespace' => 'admin', 'prefix' => env('ADMIN_URI'), 'as' => 'adm
     Route::resource('permissions', 'PermissionController');
     Route::resource('roles', 'RoleController');
 
-
-
-    Route::group(['prefix' => 'translations'], function () {
-        Route::get('/{groupKey?}', 'TranslationController@index')->name('translations.index');
-        Route::get('view/{groupKey?}', 'TranslationController@getView')->name('translations.view');
-
-        Route::post('locales/add', 'TranslationController@postAddLocale')->name('locale.add');
-        Route::post('locales/remove', 'TranslationController@postRemoveLocale')->name('locale.remove');
-        Route::post('gs/import', 'TranslationController@gsImport')->name('gs.import');
-        Route::post('gs/export', 'TranslationController@gsExport')->name('gs.export');
-    });
-
-
 });
 
 

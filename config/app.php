@@ -178,7 +178,6 @@ return [
         /*
          * Package*
          */
-        Barryvdh\TranslationManager\ManagerServiceProvider::class,
 
     ],
 

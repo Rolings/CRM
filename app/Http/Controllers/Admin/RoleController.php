@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\Permission\RoleRepository;
 use Illuminate\Http\Request;
+use App\Helpers\Admin\RouteHelper;
 
 class RoleController extends Controller
 {
@@ -44,7 +45,7 @@ class RoleController extends Controller
     public function create()
     {
         $data = [
-            'permissions'=> $this->permission->all(),
+            'permissions'=> $this->permission->all()->sortBy('route'),
             'guardName' => $this->guards
         ];
         return view('admin.template.role.create',$data);
@@ -58,13 +59,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(['active' => $request->active??0]);
-        $model = $this->model->create($request->only(['name', 'guard_name','active']));
-        if (isset($request->permission)){
+        $request->merge(['active' => $request->active ?? 0]);
+        $model = $this->model->create($request->only(['name', 'guard_name', 'active']));
+        if (isset($request->permission)) {
             $this->model->find($model->id)->permissions()->attach($request->permission);
         }
 
-        return redirect()->route('admin.roles.index');
+        return RouteHelper::getRedirect($request, $model->id, 'admin.roles');
     }
 
     /**
@@ -89,7 +90,7 @@ class RoleController extends Controller
         $model = $this->model->with(['permissions'])->find($id);
         return view('admin.template.role.edit', [
             'model'         => $model,
-            'permissions'   => $this->permission->all(),
+            'permissions'   => $this->permission->all()->sortBy('route'),
             'guardName'     => $this->guards
         ]);
     }
@@ -103,15 +104,15 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->merge(['active' => $request->active??0]);
-        $this->model->update($request->only(['name', 'guard_name','active']),$id);
+        $request->merge(['active' => $request->active ?? 0]);
+        $this->model->update($request->only(['name', 'guard_name', 'active']), $id);
         $role = $this->model->find($id);
-        if (isset($request->permission)){
+        if (isset($request->permission)) {
             $role->permissions()->sync($request->permission);
-        }else{
+        } else {
             $role->permissions()->detach();
         }
-        return redirect()->route('admin.roles.index');
+        return RouteHelper::getRedirect($request, $id, 'admin.roles');
     }
 
     /**

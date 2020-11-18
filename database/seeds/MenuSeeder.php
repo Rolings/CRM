@@ -106,6 +106,17 @@ class MenuSeeder extends Seeder
                         'is_active'=>1,
                         'order'=>5,
                     ],
+                    [
+                        'parent_id'=>null,
+                        'lang'=>'ru',
+                        'alias'=>'languages',
+                        'name'=>'Languages',
+                        'fa-icon'=>'icon-view-list',
+                        'image'=>'',
+                        'route'=>'languages.index',
+                        'is_active'=>1,
+                        'order'=>6,
+                    ],
                 ]
             ],
         ];

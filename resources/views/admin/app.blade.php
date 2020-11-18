@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/loader-style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.css') }}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style type="text/css">
         canvas#canvas4 {
             position: relative;
@@ -50,7 +50,6 @@
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script type="text/javascript" src="{{ asset('admin/js/slidebars/slidebars.min.js') }}"></script>
 
-{{--<script type="text/javascript" src="{{ asset('admin/js/load.js') }}"></script>--}}
 <script type="text/javascript" src="{{ asset('admin/js/main.js') }}"></script>
 
 <script>

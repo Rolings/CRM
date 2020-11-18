@@ -65,7 +65,7 @@
                                         @forelse($roles as $role)
                                             <tr>
                                                 <td class="numeric">{{ $role->name }}</td>
-                                                <td class="numeric">{{ $role->guard_name }}</td>
+                                                <td class="numeric">{{ $guardName[$role->guard_name] }}</td>
                                                 <td class="numeric">
                                                     @if($role->active)
                                                         <span class="status-metro status-active" title="Active">Active</span>

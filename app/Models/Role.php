@@ -9,6 +9,9 @@ class Role extends Model
 {
     use Uuid;
 
+    const ROOT = 'root';
+    const MANAGER = 'manager';
+
     protected $keyType = 'string';
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -17,6 +20,8 @@ class Role extends Model
         'guard_name',
         'active',
     ];
+
+    public $with = ['permissions'];
 
     public $timestamps = false;
 

@@ -4,19 +4,31 @@
   $(function() {
       $("#button-bg").click(function() {
           $("body").css({
-              "background": "url('img/bg5.jpg')no-repeat center center fixed"
+              "background": "url('img/bg5.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
       });
       $("#button-bg2").click(function() {
           $("body").css({
-              "background": "url('img/bg2.jpg')no-repeat center center fixed"
+              "background": "url('img/bg2.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
       });
 
 
       $("#button-bg3").click(function() {
           $("body").css({
-              "background": "url('img/bg.jpg')no-repeat center center fixed"
+              "background": "url('img/bg.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
 
 
@@ -24,7 +36,11 @@
 
       $("#button-bg5").click(function() {
           $("body").css({
-              "background": "url('img/giftly.png')repeat"
+              "background": "url('img/giftly.png')repeat" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
 
       });
@@ -38,40 +54,68 @@
 
       $("#button-bg7").click(function() {
           $("body").css({
-              "background": "url('img/bg3.png')repeat"
+              "background": "url('img/bg3.png')repeat" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
 
       });
       $("#button-bg8").click(function() {
           $("body").css({
-              "background": "url('img/bg8.jpg')no-repeat center center fixed"
+              "background": "url('img/bg8.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
       });
       $("#button-bg9").click(function() {
           $("body").css({
-              "background": "url('img/bg9.jpg')no-repeat center center fixed"
+              "background": "url('img/bg9.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
       });
 
       $("#button-bg10").click(function() {
           $("body").css({
-              "background": "url('img/bg10.jpg')no-repeat center center fixed"
+              "background": "url('img/bg10.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
       });
       $("#button-bg11").click(function() {
           $("body").css({
-              "background": "url('img/bg11.jpg')no-repeat center center fixed"
+              "background": "url('img/bg11.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
       });
       $("#button-bg12").click(function() {
           $("body").css({
-              "background": "url('img/bg12.jpg')no-repeat center center fixed"
+              "background": "url('img/bg12.jpg')no-repeat center center fixed" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
       });
 
       $("#button-bg13").click(function() {
           $("body").css({
-              "background": "url('img/bg13.jpg')repeat"
+              "background": "url('img/bg13.jpg')repeat" +
+                  "-webkit-background-size: cover;\n" +
+                  "    -moz-background-size: cover;\n" +
+                  "    -o-background-size: cover;\n" +
+                  "     background-size: cover;"
           });
 
       });

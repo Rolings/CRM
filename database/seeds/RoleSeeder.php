@@ -5,10 +5,6 @@ use App\Models\Role;
 
 class RoleSeeder extends Seeder
 {
-
-    const LEVEL = [
-        ''
-    ];
     /**
      * Run the database seeds.
      *
@@ -18,12 +14,12 @@ class RoleSeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'root',
+                'name' => Role::ROOT,
                 'guard_name' => 1,
                 'active' => 1
             ],
             [
-                'name' => 'manager',
+                'name' => Role::MANAGER,
                 'guard_name' => 1,
                 'active' => 1
             ]
