@@ -33,10 +33,6 @@
                                             @include('admin.template.role.fields',collect('guardName'))
                                             {{ Form::close() }}
                                         </section>
-                                        <h2>Permission for role</h2>
-                                        <section>
-                                            @include('admin.template.role.include.permission',collect('permissions','guardName'))
-                                        </section>
                                     </div>
                                 </div>
                             </div>

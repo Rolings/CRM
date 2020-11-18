@@ -4,18 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
-use App\Repositories\User\UserRepositories;
+use App\Repositories\Menu\MenuRepository;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
 
     protected $model;
+    protected $guards;
 
     public function __construct(Menu $menu)
     {
         // set the model
-        $this->model = new UserRepositories($menu);
+        $this->model = new MenuRepository($menu);
+        $this->guards = array_keys(config('auth.guards'));
     }
     /**
      * Display a listing of the resource.
@@ -24,7 +26,11 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('admin.template.menu.index');
+        $data = [
+            'menus'=>$this->model->all(),
+            'guardName' => $this->guards
+        ];
+        return view('admin.template.menu.index',$data);
     }
 
     /**

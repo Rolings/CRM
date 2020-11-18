@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Admin\RouteHelper;
 use App\Http\Controllers\Controller;
 use App\Repositories\Permission\PermissionRepository;
 use Illuminate\Http\Request;
 use App\Models\Permission;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Route;
 use App\Helpers\Admin\PermissionHelper;
 
 class PermissionController extends Controller
@@ -30,6 +29,7 @@ class PermissionController extends Controller
     {
         $model = $this->model->all();
         $routeCollection = PermissionHelper::getRouteCollectionFoRole($model);
+
         $data = [
             'permissions' => $routeCollection,
             'guardName' => $this->guards
@@ -59,8 +59,9 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->model->create($request->only(['route', 'guard_name']));
-        return redirect()->route('admin.permissions.index');
+        $permission = $this->model->create($request->only(['route', 'guard_name']));
+
+        return RouteHelper::getRedirect($request, $permission->id, 'admin.permissions');
     }
 
     /**
@@ -100,7 +101,7 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         $this->model->update($request->only(['route', 'guard_name']),$id);
-        return redirect()->route('admin.permissions.index');
+        return RouteHelper::getRedirect($request,$id, 'admin.permissions');
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
 return array (
-  'users' => 'Пользователи',
+  'active' => '',
+  'email' => 'Почта',
   'first_name' => 'Имя',
   'last_name' => 'Фамилия',
   'phone' => 'Телефон',
-  'email' => 'Почта',
   'role' => 'Роль',
-  'active' => '',
+  'users' => 'Пользователи',
 );

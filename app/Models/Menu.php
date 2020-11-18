@@ -11,7 +11,7 @@ class Menu extends Model
     use UUid;
 
     public $incrementing = false;
-    protected $fillable = ['id', 'parent_id', 'lang', 'active', 'alias', 'name', 'model', 'fa-icon', 'image', 'is_active', 'order'];
+    protected $fillable = ['id', 'parent_id', 'lang', 'active', 'alias', 'name', 'model', 'fa-icon','route','view', 'image', 'is_active', 'order'];
 
     public function parent()
     {
@@ -31,6 +31,11 @@ class Menu extends Model
     public function scopeIsActive($query)
     {
         return $query->where('is_active',true);
+    }
+
+    public function getAlias()
+    {
+        return (!empty($this->route) && !is_null($this->route)) ? route($this->route) : route('admin.' . $this->alias . '.index');
     }
 
 }

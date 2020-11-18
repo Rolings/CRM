@@ -23,7 +23,7 @@
             <div class="side-bar">
                 <ul class="topnav menu-left-nest">
                     <li>
-                        <a href="#" style="border-left:0px solid!important;" class="title-menu-left">
+                        <a href="{{ route('admin.setting.index') }}"  title="Settings" style="border-left:0px solid!important;" class="title-menu-left">
                             <span class="design-kit"></span>
                             <i data-toggle="tooltip" class="entypo-cog pull-right config-wrap"></i>
                         </a>
@@ -39,7 +39,10 @@
                                     <ul style="display: @if(MenuHelpers::childHasMenu($menu->children)) block @else none @endif">
                                         @forelse($menu->children as $children)
                                             <li>
-                                                <a class="tooltip-tip2 ajax-load" href="{{ route('admin.'.$children->alias.'.index') }}" title="{{ $children->name }}"><i class="{{ $children->{'fa-icon'} }}"></i><span>{{ $children->name }}</span></a>
+                                                <a class="tooltip-tip2 ajax-load" href="{{ $children->getAlias()  }}" title="{{ $children->name }}">
+                                                    <i class="{{ $children->{'fa-icon'} }}"></i>
+                                                    <span>{{ $children->name }}</span>
+                                                </a>
                                             </li>
                                         @empty
                                         @endforelse
@@ -47,7 +50,7 @@
                                 </li>
                             @else
                                 <li>
-                                    <a class="tooltip-tip ajax-load" href="{{ route('admin.'.$menu->alias.'.index') }}" title="{{ $menu->name }}">
+                                    <a class="tooltip-tip ajax-load" href="{{  $menu->getAlias()  }}" title="{{ $menu->name }}">
                                         <i class="{{ $menu->{'fa-icon'} }}"></i>
                                         <span>{{ $menu->name }}</span>
                                     </a>

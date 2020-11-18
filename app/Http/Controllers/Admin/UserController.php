@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Helpers\Admin\RouteHelper;
 use App\Models\Role;
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -74,7 +75,8 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             UserHelper::saveUserAvatar($request, $this->model, $user->id);
         }
-        return redirect()->route('admin.users.index');
+
+        return RouteHelper::getRedirect($request, $user->id, 'admin.users');
     }
 
     /**
@@ -134,7 +136,8 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             UserHelper::saveUserAvatar($request, $this->model, $id);
         }
-        return redirect()->route('admin.users.index');
+
+        return RouteHelper::getRedirect($request, $id, 'admin.users');
     }
 
     /**
