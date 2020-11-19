@@ -87,9 +87,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $model = $this->model->with(['permissions'])->find($id);
         return view('admin.template.role.edit', [
-            'model'         => $model,
+            'model'         => $this->model->with(['permissions'])->find($id),
             'permissions'   => $this->permission->all()->sortBy('route'),
             'guardName'     => $this->guards
         ]);

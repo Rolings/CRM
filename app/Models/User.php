@@ -26,6 +26,7 @@ class User extends Authenticatable
         'role_id',
         'first_name',
         'last_name',
+        'middle_name',
         'email',
         'phone',
         'avatar',
@@ -45,7 +46,10 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'active'            => 'boolean',
+        'notification'      => 'boolean',
     ];
+
 
     public $with = ['role'];
 

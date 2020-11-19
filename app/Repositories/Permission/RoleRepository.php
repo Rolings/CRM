@@ -10,10 +10,18 @@ class RoleRepository implements RepositoryInterface
     // model property on class instances
     protected $model;
 
+    // request property
+    protected $request;
+
     // Constructor to bind model to repo
     public function __construct(Model $model)
     {
         $this->model = $model;
+    }
+
+    public function prepare(object $request)
+    {
+        $this->request = $request;
     }
 
     public function find($id)
@@ -30,7 +38,8 @@ class RoleRepository implements RepositoryInterface
     // create a new record in the database
     public function create(array $data)
     {
-        return $this->model->create($data);
+        $this->model->fill($this->request->validated());
+        return $this->model->save();
     }
 
     // update record in the database

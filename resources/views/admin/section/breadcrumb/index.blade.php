@@ -1,19 +1,17 @@
 <ul id="breadcrumb">
     <li>
-        <span class="entypo-home"></span>
+        <a href="{{ route('admin.dashboard.index') }}" class="entypo-home"></a>
     </li>
-    <li><i class="fa fa-lg fa-angle-right"></i>
-    </li>
-    <li><a href="#" title="Sample page 1">Extra Pages</a>
-    </li>
-    <li><i class="fa fa-lg fa-angle-right"></i>
-    </li>
-    <li><a href="#" title="Sample page 1">Blank Page</a>
-    </li>
-    <li class="pull-right">
-        <div class="input-group input-widget">
+    @isset($breadcrumb)
+        @foreach($breadcrumb as $item)
+            @if ($loop->last)
+                <li><i class="fa fa-lg fa-angle-right"></i></li>
+                <li><span title="{{ $item->title }}">{{ $item->title }}</span></li>
+            @else
+                <li><i class="fa fa-lg fa-angle-right"></i></li>
+                <li><a href="{{ $item->url }}" title="{{ $item->title }}">{{ $item->title }}</a></li>
+            @endif
+        @endforeach
+    @endisset
 
-            <input style="border-radius:15px" type="text" placeholder="Search..." class="form-control">
-        </div>
-    </li>
 </ul>

@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Permission\RoleRepository;
 use Illuminate\Http\Request;
 use App\Repositories\User\UserRepositories;
-use Illuminate\Support\Facades\Hash;
 use App\Helpers\Admin\UserHelper;
+use App\Http\Requests\Users\{StoreRequest,UpdateRequest};
 
 class UserController extends Controller
 {
@@ -53,8 +53,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
+        dd($request->all());
         $data = [
             'first_name',
             'last_name',
@@ -115,7 +116,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $data = [
             'first_name',
