@@ -20,8 +20,8 @@ class UpdateRequest extends FormRequest
             'email'            => ['required', 'unique:users,email'],
             'role_id'          => ['required', 'integer'],
             'phone'            => ['required', 'unique:users,phone'],
-            'active'           => ['required', 'bool'],
-            'notification'     => ['required', 'bool'],
+            'active'           => ['sometimes','required', 'bool'],
+            'notification'     => ['sometimes','required', 'bool'],
             'password'         => ['sometimes', 'required_with:confirm_password'],
             'confirm_password' => ['sometimes', 'required']
         ];
